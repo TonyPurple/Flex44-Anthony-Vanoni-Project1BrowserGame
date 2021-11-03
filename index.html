@@ -20,28 +20,28 @@
 
     <link rel="stylesheet" href="style.css">
     <script defer src="app.js"></script>
-    <title>Kana Quiz</title>
+    <title>Hana Kana</title>
 </head>
 
 <body>
     <div class="container">
         <!-- Jumbotron -->
         <div class="jumbotron jumbotron-fluid bg-dark text-white mr-auto p-2">
-            <div class="container">
+            <div class="container intro">
                 <h1 class="text-center display-4">Hana Kana</h1>
                 <hr class="my-4 bg-warning">
                 <p class="lead text-center border rounded-right">Type Romaji (English letters) for the Kana (Japanese letters) you know.</p>
             </div>
         </div>
-        <div class="btn-group btn-group-lg bg-light rounded-bottom" role="group" aria-label="Choose character set">
-            <h2 class="text-center rounded-left kana select">Choose character set: </h2>
-            <button type="button" class="btn btn-primary border-left rounded-circle" type="button" data-toggle="collapse"
+        <div class="btn-group btn-group-lg bg-light rounded-bottom characterSet" role="group" aria-label="Choose character set">
+            <h2 class="text-center rounded-left">Choose character set: </h2>
+            <button type="button" class="btn btn-primary border-left rounded-circle" id="hiraganaButton" type="button" data-toggle="collapse"
                 data-target="#collapseRules" aria-expanded="false" aria-controls="collapseRules">Hiragana</button>
-            <button type="button" class="btn btn-primary border-left rounded-circle" type="button" data-toggle="collapse"
+            <button type="button" class="btn btn-primary border-left rounded-circle" id="katakanaButton" type="button" data-toggle="collapse"
                 data-target="#collapseRules" aria-expanded="false" aria-controls="collapseRules">Katakana</button>
         </div>
-        <br>
         <div class="collapse" id="collapseRules">
+            <br>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item-primary">Type your answer in Romaji in the card's text field</li>
                 <li class="list-group-item-info">Press ENTER to submit</li>
@@ -50,42 +50,46 @@
                 <li class="list-group-item-warning">If you complete all Kana, press the "Finish" button at the bottom</li>
             </ul>
         </div>
+        <br>
         <div class="card border border-primary" style="width: 18rem;">
-            <div class="card-body bg-light text-primary">
-                <div id="currentSituation"></div>
+            <div class="card-body bg-light text-primary currentSituation">
+                <div id="correct">Correct:</div>
+                <div id="incorrect">Incorrect:</div>
+                <div id="chancesLeft">Chances left:</div>
             </div>
         </div>
         <br>
-        <div class="card-columns">
-            <div class="card bg-info text-white text-center p-3 border border-warning">
+        <div class="card-columns" id="gameDisplay">
+            <!-- <div class="card bg-info text-white text-center p-3 border border-warning">
                 <h5 class="card-title">Enter romaji for を</h5>
-                <input type="text" class="romaji" value="" size=8>
+                <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
             </div>
             <div class="card bg-info text-white text-center p-3 border border-warning">
                 <h5 class="card-title">Enter romaji for ゆ</h5>
-                <input type="text" class="romaji" value="" size=8>
+                <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
             </div>
             <div class="card bg-info text-white text-center p-3 border border-warning">
                 <h5 class="card-title">Enter romaji for みゅ</h5>
-                <input type="text" class="romaji" value="" size=8>
+                <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
             </div>
             <div class="card bg-info text-white text-center p-3 border border-warning">
                 <h5 class="card-title">Enter romaji for ぬ</h5>
-                <input type="text" class="romaji" value="" size=8>
+                <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
             </div>
             <div class="card bg-info text-white text-center p-3 border border-warning">
                 <h5 class="card-title">Enter romaji for づ</h5>
-                <input type="text" class="romaji" value="" size=8>
+                <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
             </div>
             <div class="card bg-info text-white text-center p-3 border border-warning">
                 <h5 class="card-title">Enter romaji for び</h5>
-                <input type="text" class="romaji" value="" size=8>
+                <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
             </div>
             <div class="card bg-info text-white text-center p-3 border border-warning">
                 <h5 class="card-title">Enter romaji for ぐ</h5>
-                <input type="text" class="romaji" value="" size=8>
-            </div>
+                <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
+            </div> -->
         </div>
+    </div>
 </body>
 
 </html>

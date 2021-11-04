@@ -137,6 +137,12 @@
 const hiragana = 'あ,い,う,え,お,か,き,く,け,こ,さ,し,す,せ,そ,た,ち,つ,て,と,な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も,や,ゆ,よ,ら,り,る,れ,ろ,わ,を,ん,が,ぎ,ぐ,げ,ご,ざ,じ,ず,ぜ,ぞ,だ,ぢ,づ,で,ど,ば,び,ぶ,べ,ぼ,ぱ,ぴ,ぷ,ぺ,ぽ,きゃ,きゅ,きょ,しゃ,しゅ,しょ,ちゃ,ちゅ,ちょ,にゃ,にゅ,にょ,ひゃ,ひゅ,ひょ,みゃ,みゅ,みょ,りゃ,りゅ,りょ,ぎゃ,ぎゅ,ぎょ,じゃ,じゅ,じょ,びゃ,びゅ,びょ,ピャ,ピュ,ぴょ'.split(',');
 //generate an array of katakana characters
 const katakana = 'ア,イ,ウ,エ,オ,カ,キ,ク,ケ,コ,サ,シ,ス,セ,ソ,タ,チ,ツ,テ,ト,ナ,ニ,ヌ,ネ,ノ,ハ,ヒ,フ,ヘ,ホ,マ,ミ,ム,メ,モ,ヤ,ユ,ヨ,ラ,リ,ル,レ,ロ,ワ,ヲ,ン,ガ,ギ,グ,ゲ,ゴ,ザ,ジ,ズ,ゼ,ゾ,ダ,ヂ,ヅ,デ,ド,バ,ビ,ブ,ベ,ボ,パ,ピ,プ,ペ,ポ,キャ,キュ,キョ,シャ,シュ,シェ,ショ,チャ,チュ,チェ,チョ,ニャ,ニュ,ニョ,ヒャ,ヒュ,ヒョ,ミャ,ミュ,ミョ,リャ,リュ,リョ,ギャ,ギュ,ギョ,ジャ,ジュ,ジェ,ジョ,ビャ,ビュ,ビョ,ピャ,ピュ,ピョ'.split(',')
+
+//generate an array of romaji characters for katakana comparison
+const katakanaAnswers = 'a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,wo,n,ga,gi,gu,ge,go,za,ji,zu,ze,zo,da,di,du,de,do,ba,bi,bu,be,bo,pa,pi,pu,pe,po,kya,kyu,kyo,sha,shu,she,sho,cha,chu,che,cho,nya,nyu,nyo,hya,hyu,hyo,mya,myu,myo,rya,ryu,ryo,gya,gyu,gyo,jya,jyu,jye,jyo,bya,byu,byo,pya,pyu,pyo'.split(',');
+
+//generate an array of romaji characters for hiragana comparison
+const hiraganaAnswers = 'a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,wo,n,ga,gi,gu,ge,go,za,ji,zu,ze,zo,da,di,du,de,do,ba,bi,bu,be,bo,pa,pi,pu,pe,po,kya,kyu,kyo,sha,shu,sho,cha,chu,cho,nya,nyu,nyo,hya,hyu,hyo,mya,myu,myo,rya,ryu,ryo,gya,gyu,gyo,jya,jyu,jyo,bya,byu,byo,pya,pyu,pyo'.split(','); 
 //scoreboard variables
 let correct = 0;
 let incorrect = 0;
@@ -150,20 +156,18 @@ let chancesLeftElement = () => (document.getElementById('chancesLeft').innerHTML
 //card area
 const gameDisplayElement = (string) => (document.getElementById('gameDisplay').innerHTML = string);
 
-// let input = document.querySelectorAll('.romaji');
-// input.forEach(romaji => {
-//     romaji.addEventListener('keyup', function (e) {
-//         if (e.key === "Enter") {
-//             alert("Hi")
-//         }
-//     })
-// });
 
-$(document).on("keyup", ".romaji", function(e) {
-    if (e.which == 13) {
-      alert("Hi")
+
+let input = document.querySelector('#cards');
+input.addEventListener('keyup', function(e) {
+    if (e.key === "Enter") {
+        console.log(e.target.value)
     }
-  })
+})
+
+// function getUserAnswer() {
+//     console.log(userAnswer);
+// };
 
 document.getElementById("hiraganaButton").addEventListener("click", (e) => {
     const generateHiraganaCards = () => {
@@ -194,6 +198,15 @@ document.getElementById("katakanaButton").addEventListener("click", (e) => {
 
     gameDisplayElement(generateKatakanaCards());
 });
+
+
+
+// function checkAnswer(){
+//     let userAnswer = input.romaji.val 
+//     if (input.romaji.value === ${katakana}.innerHTML || input.romaji.value === ${hiragana}.innerHTML)
+//     return (('hiraganaCards').valueOf${hiragana}) && userAnswer === hiraganaAnswers[idx]
+//     || ('katakanaCards').valueOf${katakana}) && userAnswer === katakanaAnswers[idx]
+//     )};
 
 //I think I need an object of game settings - this is just a placeholder of what I think I need
 // const gameSettings = {
@@ -229,7 +242,3 @@ document.getElementById("katakanaButton").addEventListener("click", (e) => {
 // const characterSet = document.querySelector(".characterSet");
 // const gameDisplay = document.querySelector(".gameDisplay");
 // const buttons = document.querySelectorAll('button');
-
-
-// //generate an array of romaji characters
-// const romaji = 'a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,wo,n,ga,gi,gu,ge,go,za,ji,zu,ze,zo,da,di,du,de,do,ba,bi,bu,be,bo,pa,pi,pu,pe,po,kya,kyu,kyo,sha,shu,she,sho,cha,chu,che,cho,nya,nyu,nyo,hya,hyu,hyo,mya,myu,myo,rya,ryu,ryo,gya,gyu,gyo,jya,jyu,jye,jyo,bya,byu,byo,pya,pyu,pyo'.split(','));

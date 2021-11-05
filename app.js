@@ -23,115 +23,115 @@
  */
 
 //object containing all romaji keys and kana values - access ex kana.a.katakana kana.a.hiragana 
-// const kana = {
-//     a: { katakana: "ア", hiragana: "あ" },
-//     i: { katakana: "イ", hiragana: "い" },
-//     u: { katakana: "ウ", hiragana: "う" },
-//     e: { katakana: "エ", hiragana: "え" },
-//     o: { katakana: "オ", hiragana: "お" },
-//     ka: { katakana: "カ", hiragana: "か" },
-//     ki: { katakana: "キ", hiragana: "き" },
-//     ku: { katakana: "ク", hiragana: "く" },
-//     ke: { katakana: "ケ", hiragana: "け" },
-//     ko: { katakana: "コ", hiragana: "こ" },
-//     sa: { katakana: "サ", hiragana: "さ" },
-//     shi: { katakana: "シ", hiragana: "し" },
-//     su: { katakana: "ス", hiragana: "す" },
-//     se: { katakana: "セ", hiragana: "せ" },
-//     so: { katakana: "ソ", hiragana: "そ" },
-//     ta: { katakana: "タ", hiragana: "た" },
-//     chi: { katakana: "チ", hiragana: "ち" },
-//     tsu: { katakana: "ツ", hiragana: "つ" },
-//     te: { katakana: "テ", hiragana: "て" },
-//     to: { katakana: "ト", hiragana: "と" },
-//     na: { katakana: "ナ", hiragana: "な" },
-//     ni: { katakana: "ニ", hiragana: "に" },
-//     nu: { katakana: "ヌ", hiragana: "ぬ" },
-//     ne: { katakana: "ネ", hiragana: "ね" },
-//     no: { katakana: "ノ", hiragana: "の" },
-//     ha: { katakana: "ハ", hiragana: "は" },
-//     hi: { katakana: "ヒ", hiragana: "ひ" },
-//     fu: { katakana: "フ", hiragana: "ふ" },
-//     he: { katakana: "ヘ", hiragana: "へ" },
-//     ho: { katakana: "ホ", hiragana: "ほ" },
-//     ma: { katakana: "マ", hiragana: "ま" },
-//     mi: { katakana: "ミ", hiragana: "み" },
-//     mu: { katakana: "ム", hiragana: "む" },
-//     me: { katakana: "メ", hiragana: "め" },
-//     mo: { katakana: "モ", hiragana: "も" },
-//     ya: { katakana: "ヤ", hiragana: "や" },
-//     yu: { katakana: "ユ", hiragana: "ゆ" },
-//     yo: { katakana: "ヨ", hiragana: "よ" },
-//     ra: { katakana: "ラ", hiragana: "ら" },
-//     ri: { katakana: "リ", hiragana: "り" },
-//     ru: { katakana: "ル", hiragana: "る" },
-//     re: { katakana: "レ", hiragana: "れ" },
-//     ro: { katakana: "ロ", hiragana: "ろ" },
-//     wa: { katakana: "ワ", hiragana: "わ" },
-//     wo: { katakana: "ヲ", hiragana: "を" },
-//     n: { katakana: "ン", hiragana: "ん" },
-//     ga: { katakana: "ガ", hiragana: "が" },
-//     gi: { katakana: "ギ", hiragana: "ぎ" },
-//     gu: { katakana: "グ", hiragana: "ぐ" },
-//     ge: { katakana: "ゲ", hiragana: "げ" },
-//     go: { katakana: "ゴ", hiragana: "ご" },
-//     za: { katakana: "ザ", hiragana: "ざ" },
-//     ji: { katakana: "ジ", hiragana: "じ" },
-//     zu: { katakana: "ズ", hiragana: "ず" },
-//     ze: { katakana: "ゼ", hiragana: "ぜ" },
-//     zo: { katakana: "ゾ", hiragana: "ぞ" },
-//     da: { katakana: "ダ", hiragana: "だ" },
-//     di: { katakana: "ヂ", hiragana: "ぢ" },
-//     du: { katakana: "ヅ", hiragana: "づ" },
-//     de: { katakana: "デ", hiragana: "で" },
-//     do: { katakana: "ド", hiragana: "ど" },
-//     ba: { katakana: "バ", hiragana: "ば" },
-//     bi: { katakana: "ビ", hiragana: "び" },
-//     bu: { katakana: "ブ", hiragana: "ぶ" },
-//     be: { katakana: "ベ", hiragana: "べ" },
-//     bo: { katakana: "ボ", hiragana: "ぼ" },
-//     pa: { katakana: "パ", hiragana: "ぱ" },
-//     pi: { katakana: "ピ", hiragana: "ぴ" },
-//     pu: { katakana: "プ", hiragana: "ぷ" },
-//     pe: { katakana: "ペ", hiragana: "ぺ" },
-//     po: { katakana: "ポ", hiragana: "ぽ" },
-//     kya: { katakana: "キャ", hiragana: "きゃ" },
-//     kyu: { katakana: "キュ", hiragana: "きゅ" },
-//     kyo: { katakana: "キョ", hiragana: "きょ" },
-//     sha: { katakana: "シャ", hiragana: "しゃ" },
-//     shu: { katakana: "シュ", hiragana: "しゅ" },
-//     she: { katakana: "シェ", hiragana: null },
-//     sho: { katakana: "ショ", hiragana: "しょ" },
-//     cha: { katakana: "チャ", hiragana: "ちゃ" },
-//     chu: { katakana: "チュ", hiragana: "ちゅ" },
-//     che: { katakana: "チェ", hiragana: null },
-//     cho: { katakana: "チョ", hiragana: "ちょ" },
-//     nya: { katakana: "ニャ", hiragana: "にゃ" },
-//     nyu: { katakana: "ニュ", hiragana: "にゅ" },
-//     nyo: { katakana: "ニョ", hiragana: "にょ" },
-//     hya: { katakana: "ヒャ", hiragana: "ひゃ" },
-//     hyu: { katakana: "ヒュ", hiragana: "ひゅ" },
-//     hyo: { katakana: "ヒョ", hiragana: "ひょ" },
-//     mya: { katakana: "ミャ", hiragana: "みゃ" },
-//     myu: { katakana: "ミュ", hiragana: "みゅ" },
-//     myo: { katakana: "ミョ", hiragana: "みょ" },
-//     rya: { katakana: "リャ", hiragana: "りゃ" },
-//     ryu: { katakana: "リュ", hiragana: "りゅ" },
-//     ryo: { katakana: "リョ", hiragana: "りょ" },
-//     gya: { katakana: "ギャ", hiragana: "ぎゃ" },
-//     gyu: { katakana: "ギュ", hiragana: "ぎゅ" },
-//     gyo: { katakana: "ギョ", hiragana: "ぎょ" },
-//     jya: { katakana: "ジャ", hiragana: "じゃ" },
-//     jyu: { katakana: "ジュ", hiragana: "じゅ" },
-//     jye: { katakana: "ジェ", hiragana: null },
-//     jyo: { katakana: "ジョ", hiragana: "じょ" },
-//     bya: { katakana: "ビャ", hiragana: "びゃ" },
-//     byu: { katakana: "ビュ", hiragana: "びゅ" },
-//     byo: { katakana: "ビョ", hiragana: "びょ" },
-//     pya: { katakana: "ピャ", hiragana: "ぴゃ" },
-//     pyu: { katakana: "ピュ", hiragana: "ぴゅ" },
-//     pyo: { katakana: "ピョ", hiragana: "ぴょ" },
-// };
+const kana = {
+    a: { katakana: "ア", hiragana: "あ" },
+    i: { katakana: "イ", hiragana: "い" },
+    u: { katakana: "ウ", hiragana: "う" },
+    e: { katakana: "エ", hiragana: "え" },
+    o: { katakana: "オ", hiragana: "お" },
+    ka: { katakana: "カ", hiragana: "か" },
+    ki: { katakana: "キ", hiragana: "き" },
+    ku: { katakana: "ク", hiragana: "く" },
+    ke: { katakana: "ケ", hiragana: "け" },
+    ko: { katakana: "コ", hiragana: "こ" },
+    sa: { katakana: "サ", hiragana: "さ" },
+    shi: { katakana: "シ", hiragana: "し" },
+    su: { katakana: "ス", hiragana: "す" },
+    se: { katakana: "セ", hiragana: "せ" },
+    so: { katakana: "ソ", hiragana: "そ" },
+    ta: { katakana: "タ", hiragana: "た" },
+    chi: { katakana: "チ", hiragana: "ち" },
+    tsu: { katakana: "ツ", hiragana: "つ" },
+    te: { katakana: "テ", hiragana: "て" },
+    to: { katakana: "ト", hiragana: "と" },
+    na: { katakana: "ナ", hiragana: "な" },
+    ni: { katakana: "ニ", hiragana: "に" },
+    nu: { katakana: "ヌ", hiragana: "ぬ" },
+    ne: { katakana: "ネ", hiragana: "ね" },
+    no: { katakana: "ノ", hiragana: "の" },
+    ha: { katakana: "ハ", hiragana: "は" },
+    hi: { katakana: "ヒ", hiragana: "ひ" },
+    fu: { katakana: "フ", hiragana: "ふ" },
+    he: { katakana: "ヘ", hiragana: "へ" },
+    ho: { katakana: "ホ", hiragana: "ほ" },
+    ma: { katakana: "マ", hiragana: "ま" },
+    mi: { katakana: "ミ", hiragana: "み" },
+    mu: { katakana: "ム", hiragana: "む" },
+    me: { katakana: "メ", hiragana: "め" },
+    mo: { katakana: "モ", hiragana: "も" },
+    ya: { katakana: "ヤ", hiragana: "や" },
+    yu: { katakana: "ユ", hiragana: "ゆ" },
+    yo: { katakana: "ヨ", hiragana: "よ" },
+    ra: { katakana: "ラ", hiragana: "ら" },
+    ri: { katakana: "リ", hiragana: "り" },
+    ru: { katakana: "ル", hiragana: "る" },
+    re: { katakana: "レ", hiragana: "れ" },
+    ro: { katakana: "ロ", hiragana: "ろ" },
+    wa: { katakana: "ワ", hiragana: "わ" },
+    wo: { katakana: "ヲ", hiragana: "を" },
+    n: { katakana: "ン", hiragana: "ん" },
+    ga: { katakana: "ガ", hiragana: "が" },
+    gi: { katakana: "ギ", hiragana: "ぎ" },
+    gu: { katakana: "グ", hiragana: "ぐ" },
+    ge: { katakana: "ゲ", hiragana: "げ" },
+    go: { katakana: "ゴ", hiragana: "ご" },
+    za: { katakana: "ザ", hiragana: "ざ" },
+    ji: { katakana: "ジ", hiragana: "じ" },
+    zu: { katakana: "ズ", hiragana: "ず" },
+    ze: { katakana: "ゼ", hiragana: "ぜ" },
+    zo: { katakana: "ゾ", hiragana: "ぞ" },
+    da: { katakana: "ダ", hiragana: "だ" },
+    di: { katakana: "ヂ", hiragana: "ぢ" },
+    du: { katakana: "ヅ", hiragana: "づ" },
+    de: { katakana: "デ", hiragana: "で" },
+    do: { katakana: "ド", hiragana: "ど" },
+    ba: { katakana: "バ", hiragana: "ば" },
+    bi: { katakana: "ビ", hiragana: "び" },
+    bu: { katakana: "ブ", hiragana: "ぶ" },
+    be: { katakana: "ベ", hiragana: "べ" },
+    bo: { katakana: "ボ", hiragana: "ぼ" },
+    pa: { katakana: "パ", hiragana: "ぱ" },
+    pi: { katakana: "ピ", hiragana: "ぴ" },
+    pu: { katakana: "プ", hiragana: "ぷ" },
+    pe: { katakana: "ペ", hiragana: "ぺ" },
+    po: { katakana: "ポ", hiragana: "ぽ" },
+    kya: { katakana: "キャ", hiragana: "きゃ" },
+    kyu: { katakana: "キュ", hiragana: "きゅ" },
+    kyo: { katakana: "キョ", hiragana: "きょ" },
+    sha: { katakana: "シャ", hiragana: "しゃ" },
+    shu: { katakana: "シュ", hiragana: "しゅ" },
+    she: { katakana: "シェ", hiragana: null },
+    sho: { katakana: "ショ", hiragana: "しょ" },
+    cha: { katakana: "チャ", hiragana: "ちゃ" },
+    chu: { katakana: "チュ", hiragana: "ちゅ" },
+    che: { katakana: "チェ", hiragana: null },
+    cho: { katakana: "チョ", hiragana: "ちょ" },
+    nya: { katakana: "ニャ", hiragana: "にゃ" },
+    nyu: { katakana: "ニュ", hiragana: "にゅ" },
+    nyo: { katakana: "ニョ", hiragana: "にょ" },
+    hya: { katakana: "ヒャ", hiragana: "ひゃ" },
+    hyu: { katakana: "ヒュ", hiragana: "ひゅ" },
+    hyo: { katakana: "ヒョ", hiragana: "ひょ" },
+    mya: { katakana: "ミャ", hiragana: "みゃ" },
+    myu: { katakana: "ミュ", hiragana: "みゅ" },
+    myo: { katakana: "ミョ", hiragana: "みょ" },
+    rya: { katakana: "リャ", hiragana: "りゃ" },
+    ryu: { katakana: "リュ", hiragana: "りゅ" },
+    ryo: { katakana: "リョ", hiragana: "りょ" },
+    gya: { katakana: "ギャ", hiragana: "ぎゃ" },
+    gyu: { katakana: "ギュ", hiragana: "ぎゅ" },
+    gyo: { katakana: "ギョ", hiragana: "ぎょ" },
+    jya: { katakana: "ジャ", hiragana: "じゃ" },
+    jyu: { katakana: "ジュ", hiragana: "じゅ" },
+    jye: { katakana: "ジェ", hiragana: null },
+    jyo: { katakana: "ジョ", hiragana: "じょ" },
+    bya: { katakana: "ビャ", hiragana: "びゃ" },
+    byu: { katakana: "ビュ", hiragana: "びゅ" },
+    byo: { katakana: "ビョ", hiragana: "びょ" },
+    pya: { katakana: "ピャ", hiragana: "ぴゃ" },
+    pyu: { katakana: "ピュ", hiragana: "ぴゅ" },
+    pyo: { katakana: "ピョ", hiragana: "ぴょ" },
+};
 
 //generate an array of hiragana characters
 const hiragana = 'あ,い,う,え,お,か,き,く,け,こ,さ,し,す,せ,そ,た,ち,つ,て,と,な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も,や,ゆ,よ,ら,り,る,れ,ろ,わ,を,ん,が,ぎ,ぐ,げ,ご,ざ,じ,ず,ぜ,ぞ,だ,ぢ,づ,で,ど,ば,び,ぶ,べ,ぼ,ぱ,ぴ,ぷ,ぺ,ぽ,きゃ,きゅ,きょ,しゃ,しゅ,しょ,ちゃ,ちゅ,ちょ,にゃ,にゅ,にょ,ひゃ,ひゅ,ひょ,みゃ,みゅ,みょ,りゃ,りゅ,りょ,ぎゃ,ぎゅ,ぎょ,じゃ,じゅ,じょ,びゃ,びゅ,びょ,ピャ,ピュ,ぴょ'.split(',');
@@ -143,31 +143,47 @@ const katakanaAnswers = 'a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,
 
 //generate an array of romaji characters for hiragana comparison
 const hiraganaAnswers = 'a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,wo,n,ga,gi,gu,ge,go,za,ji,zu,ze,zo,da,di,du,de,do,ba,bi,bu,be,bo,pa,pi,pu,pe,po,kya,kyu,kyo,sha,shu,sho,cha,chu,cho,nya,nyu,nyo,hya,hyu,hyo,mya,myu,myo,rya,ryu,ryo,gya,gyu,gyo,jya,jyu,jyo,bya,byu,byo,pya,pyu,pyo'.split(','); 
+
 //scoreboard variables
 let correct = 0;
 let incorrect = 0;
-let chances = 10;
+let chancesLeft = 10;
 
 //game situation updater
-let correctElement = () => (document.getElementById('correct').innerHTML = correct);
-let incorrectElement = () => (document.getElementById('incorrect').innerHTML = incorrect);
-let chancesLeftElement = () => (document.getElementById('chancesLeft').innerHTML = chancesLeft);
+let correctElement = () => (document.getElementById('correct').innerHTML = `Correct: ${correct}`);
+let incorrectElement = () => (document.getElementById('incorrect').innerHTML = `Incorrect: ${incorrect}`);
+let chancesLeftElement = () => (document.getElementById('chancesLeft').innerHTML = `Chances left: ${chancesLeft}`);
+
+correctElement()
+incorrectElement()
+chancesLeftElement()
 
 //card area
 const gameDisplayElement = (string) => (document.getElementById('gameDisplay').innerHTML = string);
 
-
+let userAnswer;
 
 let input = document.querySelector('#cards');
 input.addEventListener('keyup', function(e) {
     if (e.key === "Enter") {
-        console.log(e.target.value)
+        userAnswer = e.target.value
+    //    console.log(userAnswer)
+        getUserAnswer()
     }
 })
 
-// function getUserAnswer() {
-//     console.log(userAnswer);
-// };
+function getUserAnswer() {
+//     if (kana.userAnswer === hiragana.indexOf(h5.innerText) {
+//         console.log('success')
+    // } else if (katakanaAnswers.includes(userAnswer) && katakanaAnswers.indexOf === katakana.indexOf) {
+    //     console.log('success')
+    // } else {
+    //     console.log('incorrect')
+    // }
+  alert(userAnswer)
+}
+
+
 
 document.getElementById("hiraganaButton").addEventListener("click", (e) => {
     const generateHiraganaCards = () => {

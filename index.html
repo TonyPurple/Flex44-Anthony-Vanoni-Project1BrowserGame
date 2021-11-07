@@ -46,49 +46,21 @@
                 <li class="list-group-item-primary">Type your answer in Romaji in the card's text field</li>
                 <li class="list-group-item-info">Press ENTER to submit</li>
                 <li class="list-group-item-success">Repeat for as many cards as you can</li>
-                <li class="list-group-item-danger">You are allowed up to 10 incorrect entries before the game will finish</li>
+                <li class="list-group-item-danger">You are allowed up to 15 incorrect entries before the game will finish</li>
                 <li class="list-group-item-warning">If you complete all Kana, press the "Finish" button at the bottom</li>
             </ul>
         </div>
         <br>
         <div class="card border border-primary" style="width: 18rem;">
             <div class="card-body bg-light text-primary currentSituation">
-                <div id="correct"></div>
-                <div id="incorrect"></div>
-                <div id="chancesLeft"></div>
+                <div>Correct: <span id ="correct"></span></div>
+                <div>Incorrect: <span id="incorrect"></span></div>
+                <div>Chances Left: <span id="chancesLeft"></span></div>
             </div>
         </div>
         <br>
         <div class="container" id="cards">
             <div class="card-columns" id="gameDisplay">
-                <!-- <div class="card bg-info text-white text-center p-3 border border-warning">
-                    <h5 class="card-title">Enter romaji for を</h5>
-                    <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
-                </div>
-                <div class="card bg-info text-white text-center p-3 border border-warning">
-                    <h5 class="card-title">Enter romaji for ゆ</h5>
-                    <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
-                </div>
-                <div class="card bg-info text-white text-center p-3 border border-warning">
-                    <h5 class="card-title">Enter romaji for みゅ</h5>
-                    <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
-                </div>
-                <div class="card bg-info text-white text-center p-3 border border-warning">
-                    <h5 class="card-title">Enter romaji for ぬ</h5>
-                    <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
-                </div>
-                <div class="card bg-info text-white text-center p-3 border border-warning">
-                    <h5 class="card-title">Enter romaji for づ</h5>
-                    <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
-                </div>
-                <div class="card bg-info text-white text-center p-3 border border-warning">
-                    <h5 class="card-title">Enter romaji for び</h5>
-                    <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
-                </div>
-                <div class="card bg-info text-white text-center p-3 border border-warning">
-                    <h5 class="card-title">Enter romaji for ぐ</h5>
-                    <input type="text" class="romaji" value="" size=8 autofocus autocomplete="off">
-                </div> -->
             </div>
         </div>
     </div>

@@ -30,32 +30,28 @@
             <div class="container intro">
                 <h1 class="text-center display-4">Hana Kana</h1>
                 <hr class="my-4 bg-warning">
-                <p class="lead text-center border rounded-right">Type Romaji (English letters) for the Kana (Japanese letters) you know.</p>
+                <p class="lead text-center border rounded-right">Type Romaji (English letters) for the Kana (Japanese
+                    letters) you know.</p>
             </div>
         </div>
-        <div class="btn-group btn-group-lg bg-light rounded-bottom characterSet" role="group" aria-label="Choose character set">
+        <div class="btn-group btn-group-lg bg-light rounded-bottom characterSet" role="group"
+            aria-label="Choose character set">
             <h2 class="text-center rounded-left">Choose character set: </h2>
-            <button type="button" class="btn btn-primary border-left rounded-circle" id="hiraganaButton" type="button" data-toggle="collapse"
-                data-target="#collapseRules" aria-expanded="false" aria-controls="collapseRules">Hiragana</button>
-            <button type="button" class="btn btn-primary border-left rounded-circle" id="katakanaButton" type="button" data-toggle="collapse"
-                data-target="#collapseRules" aria-expanded="false" aria-controls="collapseRules">Katakana</button>
+            <button type="button" class="btn btn-primary border-left rounded-circle" id="hiraganaButton" type="button">Hiragana</button>
+            <button type="button" class="btn btn-primary border-left rounded-circle" id="katakanaButton" type="button">Katakana</button>
         </div>
-        <div class="collapse" id="collapseRules">
-            <br>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item-primary">Type your answer in Romaji in the card's text field</li>
-                <li class="list-group-item-info">Press ENTER to submit</li>
-                <li class="list-group-item-success">Repeat for as many cards as you can</li>
-                <li class="list-group-item-danger">You are allowed up to 15 incorrect entries before the game will finish</li>
-                <li class="list-group-item-warning">If you complete all Kana, press the "Finish" button at the bottom</li>
-            </ul>
+        <div class="rules" id="collapseRules">
+        </div>
+        <div class="charts" id="collapseCharts">
+            <div class="hiragana"></div>
+            <div class="katakana"></div>
         </div>
         <br>
-        <div class="card border border-primary" style="width: 18rem;">
+        <div class="card border border-primary sticky-top" style="width: 18rem;">
             <div class="card-body bg-light text-primary currentSituation">
-                <div>Correct: <span id ="correct"></span></div>
+                <div>Correct: <span id="correct"></span></div>
                 <div>Incorrect: <span id="incorrect"></span></div>
-                <div>Chances Left: <span id="chancesLeft"></span></div>
+                <div>Chances left: <span id="chancesLeft"></span></div>
             </div>
         </div>
         <br>
@@ -63,6 +59,7 @@
             <div class="card-columns" id="gameDisplay">
             </div>
         </div>
+        <button type="button" id="finish" class="btn btn-secondary btn-lg btn-block">Finish</button>
     </div>
 </body>
 

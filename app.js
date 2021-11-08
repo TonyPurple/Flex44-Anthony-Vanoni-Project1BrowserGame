@@ -2,12 +2,12 @@
  * Plan
  * user comes to screen with game title and objective
  * there is a div to choose the character set (hiragana or katakana)
- * when they click the button, the collapsible game rules will show, as well as generating the question cards for the appropriate character set and initializing the scoreboard
+ * when they click the button, the game rules button will appear, as well as generating the randomized question cards for the appropriate character set and initializing the scoreboard
  * 
  * Game idea
  * the user types the answer in Romaji (english keys below) in the card's text field for all the Japanese characters they know in the selected kana set
  * they submit answers by pressing enter, repeating for as many cards as they can
- * they are allowed up to 10 incorrect entries before the game will finish
+ * they are allowed up to 15 incorrect entries before the game will finish
  * if they complete all kana, a finish button or alert should be present to provide their results
  * 
  * Game logic
@@ -145,238 +145,271 @@
 // const hiraganaAnswers = 'a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,wo,n,ga,gi,gu,ge,go,za,ji,zu,ze,zo,da,di,du,de,do,ba,bi,bu,be,bo,pa,pi,pu,pe,po,kya,kyu,kyo,sha,shu,sho,cha,chu,cho,nya,nyu,nyo,hya,hyu,hyo,mya,myu,myo,rya,ryu,ryo,gya,gyu,gyo,jya,jyu,jyo,bya,byu,byo,pya,pyu,pyo'.split(',');
 
 const hiragana = [
-    {kana:'あ', ans:'a'},
-    {kana:'い', ans:'i'},
-    {kana:'う', ans:'u'},
-    {kana:'え', ans:'e'},
-    {kana:'お', ans:'o'},
-    {kana:'か', ans:'ka'},
-    {kana:'き', ans:'ki'},
-    {kana:'く', ans:'ku'},
-    {kana:'け', ans:'ke'},
-    {kana:'こ', ans:'ko'},
-    {kana:'さ', ans:'sa'},
-    {kana:'し', ans:'shi'},
-    {kana:'す', ans:'su'},
-    {kana:'せ', ans:'se'},
-    {kana:'そ', ans:'so'},
-    {kana:'た', ans:'ta'},
-    {kana:'ち', ans:'chi'},
-    {kana:'つ', ans:'tsu'},
-    {kana:'て', ans:'te'},
-    {kana:'と', ans:'to'},
-    {kana:'な', ans:'na'},
-    {kana:'に', ans:'ni'},
-    {kana:'ぬ', ans:'nu'},
-    {kana:'ね', ans:'ne'},
-    {kana:'の', ans:'no'},
-    {kana:'は', ans:'ha'},
-    {kana:'ひ', ans:'hi'},
-    {kana:'ふ', ans:'fu'},
-    {kana:'へ', ans:'he'},
-    {kana:'ほ', ans:'ho'},
-    {kana:'ま', ans:'ma'},
-    {kana:'み', ans:'mi'},
-    {kana:'む', ans:'mu'},
-    {kana:'め', ans:'me'},
-    {kana:'も', ans:'mo'},
-    {kana:'や', ans:'ya'},
-    {kana:'ゆ', ans:'yu'},
-    {kana:'よ', ans:'yo'},
-    {kana:'ら', ans:'ra'},
-    {kana:'り', ans:'ri'},
-    {kana:'る', ans:'ru'},
-    {kana:'れ', ans:'re'},
-    {kana:'ろ', ans:'ro'},
-    {kana:'わ', ans:'wa'},
-    {kana:'ん', ans:'n'},
-    {kana:'を', ans:'wo'},
-    {kana:'が', ans:'ga'},
-    {kana:'ぎ', ans:'gi'},
-    {kana:'ぐ', ans:'gu'},
-    {kana:'げ', ans:'ge'},
-    {kana:'ご', ans:'go'},
-    {kana:'ざ', ans:'za'},
-    {kana:'じ', ans:'ji'},
-    {kana:'ず', ans:'zu'},
-    {kana:'ぜ', ans:'ze'},
-    {kana:'ぞ', ans:'zo'},
-    {kana:'だ', ans:'da'},
-    {kana:'ぢ', ans:'di'},
-    {kana:'づ', ans:'du'},
-    {kana:'で', ans:'de'},
-    {kana:'ど', ans:'do'},
-    {kana:'ば', ans:'ba'},
-    {kana:'び', ans:'bi'},
-    {kana:'ぶ', ans:'bu'},
-    {kana:'べ', ans:'be'},
-    {kana:'ぼ', ans:'bo'},
-    {kana:'ぱ', ans:'pa'},
-    {kana:'ぴ', ans:'pi'},
-    {kana:'ぷ', ans:'pu'},
-    {kana:'ぺ', ans:'pe'},
-    {kana:'ぽ', ans:'po'},
-    {kana:'きゃ', ans:'kya'},
-    {kana:'きゅ', ans:'kyu'},
-    {kana:'きょ', ans:'kyo'},
-    {kana:'しゃ', ans:'sha'},
-    {kana:'しゅ', ans:'shu'},
-    {kana:'しょ', ans:'sho'},
-    {kana:'ちゃ', ans:'cha'},
-    {kana:'ちゅ', ans:'chu'},
-    {kana:'ちょ', ans:'cho'},
-    {kana:'にゃ', ans:'nya'},
-    {kana:'にゅ', ans:'nyu'},
-    {kana:'にょ', ans:'nyo'},
-    {kana:'ひゃ', ans:'hya'},
-    {kana:'ひゅ', ans:'hyu'},
-    {kana:'ひょ', ans:'hyo'},
-    {kana:'みゃ', ans:'mya'},
-    {kana:'みゅ', ans:'myu'},
-    {kana:'みょ', ans:'myo'},
-    {kana:'りゃ', ans:'rya'},
-    {kana:'りゅ', ans:'ryu'},
-    {kana:'りょ', ans:'ryo'},
-    {kana:'ぎゃ', ans:'gya'},
-    {kana:'ぎゅ', ans:'gyu'},
-    {kana:'ぎょ', ans:'gyo'},
-    {kana:'じゃ', ans:'jya'},
-    {kana:'じゅ', ans:'jyu'},
-    {kana:'じょ', ans:'jyo'},
-    {kana:'ぢゃ', ans:'dya'},
-    {kana:'ぢゅ', ans:'dyu'},
-    {kana:'ぢょ', ans:'dyo'},
-    {kana:'びゃ', ans:'bya'},
-    {kana:'びゅ', ans:'byu'},
-    {kana:'びょ', ans:'byo'},
-    {kana:'ぴゃ', ans:'pya'},
-    {kana:'ぴゅ', ans:'pyu'},
-    {kana:'ぴょ', ans:'pyo'},
+    { kana: 'あ', ans: 'a' },
+    { kana: 'い', ans: 'i' },
+    { kana: 'う', ans: 'u' },
+    { kana: 'え', ans: 'e' },
+    { kana: 'お', ans: 'o' },
+    { kana: 'か', ans: 'ka' },
+    { kana: 'き', ans: 'ki' },
+    { kana: 'く', ans: 'ku' },
+    { kana: 'け', ans: 'ke' },
+    { kana: 'こ', ans: 'ko' },
+    { kana: 'さ', ans: 'sa' },
+    { kana: 'し', ans: 'shi' },
+    { kana: 'す', ans: 'su' },
+    { kana: 'せ', ans: 'se' },
+    { kana: 'そ', ans: 'so' },
+    { kana: 'た', ans: 'ta' },
+    { kana: 'ち', ans: 'chi' },
+    { kana: 'つ', ans: 'tsu' },
+    { kana: 'て', ans: 'te' },
+    { kana: 'と', ans: 'to' },
+    { kana: 'な', ans: 'na' },
+    { kana: 'に', ans: 'ni' },
+    { kana: 'ぬ', ans: 'nu' },
+    { kana: 'ね', ans: 'ne' },
+    { kana: 'の', ans: 'no' },
+    { kana: 'は', ans: 'ha' },
+    { kana: 'ひ', ans: 'hi' },
+    { kana: 'ふ', ans: 'fu' },
+    { kana: 'へ', ans: 'he' },
+    { kana: 'ほ', ans: 'ho' },
+    { kana: 'ま', ans: 'ma' },
+    { kana: 'み', ans: 'mi' },
+    { kana: 'む', ans: 'mu' },
+    { kana: 'め', ans: 'me' },
+    { kana: 'も', ans: 'mo' },
+    { kana: 'や', ans: 'ya' },
+    { kana: 'ゆ', ans: 'yu' },
+    { kana: 'よ', ans: 'yo' },
+    { kana: 'ら', ans: 'ra' },
+    { kana: 'り', ans: 'ri' },
+    { kana: 'る', ans: 'ru' },
+    { kana: 'れ', ans: 're' },
+    { kana: 'ろ', ans: 'ro' },
+    { kana: 'わ', ans: 'wa' },
+    { kana: 'ん', ans: 'n' },
+    { kana: 'を', ans: 'wo' },
+    { kana: 'が', ans: 'ga' },
+    { kana: 'ぎ', ans: 'gi' },
+    { kana: 'ぐ', ans: 'gu' },
+    { kana: 'げ', ans: 'ge' },
+    { kana: 'ご', ans: 'go' },
+    { kana: 'ざ', ans: 'za' },
+    { kana: 'じ', ans: 'ji' },
+    { kana: 'ず', ans: 'zu' },
+    { kana: 'ぜ', ans: 'ze' },
+    { kana: 'ぞ', ans: 'zo' },
+    { kana: 'だ', ans: 'da' },
+    { kana: 'ぢ', ans: 'di' },
+    { kana: 'づ', ans: 'du' },
+    { kana: 'で', ans: 'de' },
+    { kana: 'ど', ans: 'do' },
+    { kana: 'ば', ans: 'ba' },
+    { kana: 'び', ans: 'bi' },
+    { kana: 'ぶ', ans: 'bu' },
+    { kana: 'べ', ans: 'be' },
+    { kana: 'ぼ', ans: 'bo' },
+    { kana: 'ぱ', ans: 'pa' },
+    { kana: 'ぴ', ans: 'pi' },
+    { kana: 'ぷ', ans: 'pu' },
+    { kana: 'ぺ', ans: 'pe' },
+    { kana: 'ぽ', ans: 'po' },
+    { kana: 'きゃ', ans: 'kya' },
+    { kana: 'きゅ', ans: 'kyu' },
+    { kana: 'きょ', ans: 'kyo' },
+    { kana: 'しゃ', ans: 'sha' },
+    { kana: 'しゅ', ans: 'shu' },
+    { kana: 'しょ', ans: 'sho' },
+    { kana: 'ちゃ', ans: 'cha' },
+    { kana: 'ちゅ', ans: 'chu' },
+    { kana: 'ちょ', ans: 'cho' },
+    { kana: 'にゃ', ans: 'nya' },
+    { kana: 'にゅ', ans: 'nyu' },
+    { kana: 'にょ', ans: 'nyo' },
+    { kana: 'ひゃ', ans: 'hya' },
+    { kana: 'ひゅ', ans: 'hyu' },
+    { kana: 'ひょ', ans: 'hyo' },
+    { kana: 'みゃ', ans: 'mya' },
+    { kana: 'みゅ', ans: 'myu' },
+    { kana: 'みょ', ans: 'myo' },
+    { kana: 'りゃ', ans: 'rya' },
+    { kana: 'りゅ', ans: 'ryu' },
+    { kana: 'りょ', ans: 'ryo' },
+    { kana: 'ぎゃ', ans: 'gya' },
+    { kana: 'ぎゅ', ans: 'gyu' },
+    { kana: 'ぎょ', ans: 'gyo' },
+    { kana: 'じゃ', ans: 'jya' },
+    { kana: 'じゅ', ans: 'jyu' },
+    { kana: 'じょ', ans: 'jyo' },
+    { kana: 'ぢゃ', ans: 'dya' },
+    { kana: 'ぢゅ', ans: 'dyu' },
+    { kana: 'ぢょ', ans: 'dyo' },
+    { kana: 'びゃ', ans: 'bya' },
+    { kana: 'びゅ', ans: 'byu' },
+    { kana: 'びょ', ans: 'byo' },
+    { kana: 'ぴゃ', ans: 'pya' },
+    { kana: 'ぴゅ', ans: 'pyu' },
+    { kana: 'ぴょ', ans: 'pyo' },
 ]
 
 const katakana = [
-    {kana:'ア', ans:'a'},
-    {kana:'イ', ans:'i'},
-    {kana:'ウ', ans:'u'},
-    {kana:'エ', ans:'e'},
-    {kana:'オ', ans:'o'},
-    {kana:'カ', ans:'ka'},
-    {kana:'キ', ans:'ki'},
-    {kana:'ク', ans:'ku'},
-    {kana:'ケ', ans:'ke'},
-    {kana:'コ', ans:'ko'},
-    {kana:'サ', ans:'sa'},
-    {kana:'シ', ans:'shi'},
-    {kana:'ス', ans:'su'},
-    {kana:'セ', ans:'se'},
-    {kana:'ソ', ans:'so'},
-    {kana:'タ', ans:'ta'},
-    {kana:'チ', ans:'chi'},
-    {kana:'ツ', ans:'tsu'},
-    {kana:'テ', ans:'te'},
-    {kana:'ト', ans:'to'},
-    {kana:'ナ', ans:'na'},
-    {kana:'ニ', ans:'ni'},
-    {kana:'ヌ', ans:'nu'},
-    {kana:'ネ', ans:'ne'},
-    {kana:'ノ', ans:'no'},
-    {kana:'ハ', ans:'ha'},
-    {kana:'ヒ', ans:'hi'},
-    {kana:'フ', ans:'fu'},
-    {kana:'ヘ', ans:'he'},
-    {kana:'ホ', ans:'ho'},
-    {kana:'マ', ans:'ma'},
-    {kana:'ミ', ans:'mi'},
-    {kana:'ム', ans:'mu'},
-    {kana:'メ', ans:'me'},
-    {kana:'モ', ans:'mo'},
-    {kana:'ヤ', ans:'ya'},
-    {kana:'ユ', ans:'yu'},
-    {kana:'ヨ', ans:'yo'},
-    {kana:'ラ', ans:'ra'},
-    {kana:'リ', ans:'ri'},
-    {kana:'ル', ans:'ru'},
-    {kana:'レ', ans:'re'},
-    {kana:'ロ', ans:'ro'},
-    {kana:'ワ', ans:'wa'},
-    {kana:'ン', ans:'n'},
-    {kana:'ヲ', ans:'wo'},
-    {kana:'ガ', ans:'ga'},
-    {kana:'ギ', ans:'gi'},
-    {kana:'グ', ans:'gu'},
-    {kana:'ゲ', ans:'ge'},
-    {kana:'ゴ', ans:'go'},
-    {kana:'ザ', ans:'za'},
-    {kana:'ジ', ans:'ji'},
-    {kana:'ズ', ans:'zu'},
-    {kana:'ゼ', ans:'ze'},
-    {kana:'ゾ', ans:'zo'},
-    {kana:'ダ', ans:'da'},
-    {kana:'ヂ', ans:'di'},
-    {kana:'ヅ', ans:'du'},
-    {kana:'デ', ans:'de'},
-    {kana:'ド', ans:'do'},
-    {kana:'バ', ans:'ba'},
-    {kana:'ビ', ans:'bi'},
-    {kana:'ブ', ans:'bu'},
-    {kana:'ベ', ans:'be'},
-    {kana:'ボ', ans:'bo'},
-    {kana:'パ', ans:'pa'},
-    {kana:'ピ', ans:'pi'},
-    {kana:'プ', ans:'pu'},
-    {kana:'ペ', ans:'pe'},
-    {kana:'ポ', ans:'po'},
-    {kana:'キャ', ans:'kya'},
-    {kana:'キュ', ans:'kyu'},
-    {kana:'キョ', ans:'kyo'},
-    {kana:'シャ', ans:'sha'},
-    {kana:'シュ', ans:'shu'},
-    {kana:'シェ', ans:'she'},
-    {kana:'ショ', ans:'sho'},
-    {kana:'チャ', ans:'cha'},
-    {kana:'チュ', ans:'chu'},
-    {kana:'チェ', ans:'che'},
-    {kana:'チョ', ans:'cho'},
-    {kana:'ニャ', ans:'nya'},
-    {kana:'ニュ', ans:'nyu'},
-    {kana:'ニョ', ans:'nyo'},
-    {kana:'ヒャ', ans:'hya'},
-    {kana:'ヒュ', ans:'hyu'},
-    {kana:'ヒョ', ans:'hyo'},
-    {kana:'ミャ', ans:'mya'},
-    {kana:'ミュ', ans:'myu'},
-    {kana:'ミョ', ans:'myo'},
-    {kana:'リャ', ans:'rya'},
-    {kana:'リュ', ans:'ryu'},
-    {kana:'リョ', ans:'ryo'},
-    {kana:'ギャ', ans:'gya'},
-    {kana:'ギュ', ans:'gyu'},
-    {kana:'ギョ', ans:'gyo'},
-    {kana:'ジャ', ans:'jya'},
-    {kana:'ジュ', ans:'jyu'},
-    {kana:'ジェ', ans:'jye'},
-    {kana:'ジョ', ans:'jyo'},
-    {kana:'ヂャ', ans:'dya'},
-    {kana:'ヂュ', ans:'dyu'},
-    {kana:'ヂョ', ans:'dyo'},
-    {kana:'ビャ', ans:'bya'},
-    {kana:'ビュ', ans:'byu'},
-    {kana:'ビョ', ans:'byo'},
-    {kana:'ピャ', ans:'pya'},
-    {kana:'ピュ', ans:'pyu'},
-    {kana:'ピョ', ans:'pyo'},
+    { kana: 'ア', ans: 'a' },
+    { kana: 'イ', ans: 'i' },
+    { kana: 'ウ', ans: 'u' },
+    { kana: 'エ', ans: 'e' },
+    { kana: 'オ', ans: 'o' },
+    { kana: 'カ', ans: 'ka' },
+    { kana: 'キ', ans: 'ki' },
+    { kana: 'ク', ans: 'ku' },
+    { kana: 'ケ', ans: 'ke' },
+    { kana: 'コ', ans: 'ko' },
+    { kana: 'サ', ans: 'sa' },
+    { kana: 'シ', ans: 'shi' },
+    { kana: 'ス', ans: 'su' },
+    { kana: 'セ', ans: 'se' },
+    { kana: 'ソ', ans: 'so' },
+    { kana: 'タ', ans: 'ta' },
+    { kana: 'チ', ans: 'chi' },
+    { kana: 'ツ', ans: 'tsu' },
+    { kana: 'テ', ans: 'te' },
+    { kana: 'ト', ans: 'to' },
+    { kana: 'ナ', ans: 'na' },
+    { kana: 'ニ', ans: 'ni' },
+    { kana: 'ヌ', ans: 'nu' },
+    { kana: 'ネ', ans: 'ne' },
+    { kana: 'ノ', ans: 'no' },
+    { kana: 'ハ', ans: 'ha' },
+    { kana: 'ヒ', ans: 'hi' },
+    { kana: 'フ', ans: 'fu' },
+    { kana: 'ヘ', ans: 'he' },
+    { kana: 'ホ', ans: 'ho' },
+    { kana: 'マ', ans: 'ma' },
+    { kana: 'ミ', ans: 'mi' },
+    { kana: 'ム', ans: 'mu' },
+    { kana: 'メ', ans: 'me' },
+    { kana: 'モ', ans: 'mo' },
+    { kana: 'ヤ', ans: 'ya' },
+    { kana: 'ユ', ans: 'yu' },
+    { kana: 'ヨ', ans: 'yo' },
+    { kana: 'ラ', ans: 'ra' },
+    { kana: 'リ', ans: 'ri' },
+    { kana: 'ル', ans: 'ru' },
+    { kana: 'レ', ans: 're' },
+    { kana: 'ロ', ans: 'ro' },
+    { kana: 'ワ', ans: 'wa' },
+    { kana: 'ン', ans: 'n' },
+    { kana: 'ヲ', ans: 'wo' },
+    { kana: 'ガ', ans: 'ga' },
+    { kana: 'ギ', ans: 'gi' },
+    { kana: 'グ', ans: 'gu' },
+    { kana: 'ゲ', ans: 'ge' },
+    { kana: 'ゴ', ans: 'go' },
+    { kana: 'ザ', ans: 'za' },
+    { kana: 'ジ', ans: 'ji' },
+    { kana: 'ズ', ans: 'zu' },
+    { kana: 'ゼ', ans: 'ze' },
+    { kana: 'ゾ', ans: 'zo' },
+    { kana: 'ダ', ans: 'da' },
+    { kana: 'ヂ', ans: 'di' },
+    { kana: 'ヅ', ans: 'du' },
+    { kana: 'デ', ans: 'de' },
+    { kana: 'ド', ans: 'do' },
+    { kana: 'バ', ans: 'ba' },
+    { kana: 'ビ', ans: 'bi' },
+    { kana: 'ブ', ans: 'bu' },
+    { kana: 'ベ', ans: 'be' },
+    { kana: 'ボ', ans: 'bo' },
+    { kana: 'パ', ans: 'pa' },
+    { kana: 'ピ', ans: 'pi' },
+    { kana: 'プ', ans: 'pu' },
+    { kana: 'ペ', ans: 'pe' },
+    { kana: 'ポ', ans: 'po' },
+    { kana: 'キャ', ans: 'kya' },
+    { kana: 'キュ', ans: 'kyu' },
+    { kana: 'キョ', ans: 'kyo' },
+    { kana: 'シャ', ans: 'sha' },
+    { kana: 'シュ', ans: 'shu' },
+    { kana: 'シェ', ans: 'she' },
+    { kana: 'ショ', ans: 'sho' },
+    { kana: 'チャ', ans: 'cha' },
+    { kana: 'チュ', ans: 'chu' },
+    { kana: 'チェ', ans: 'che' },
+    { kana: 'チョ', ans: 'cho' },
+    { kana: 'ニャ', ans: 'nya' },
+    { kana: 'ニュ', ans: 'nyu' },
+    { kana: 'ニョ', ans: 'nyo' },
+    { kana: 'ヒャ', ans: 'hya' },
+    { kana: 'ヒュ', ans: 'hyu' },
+    { kana: 'ヒョ', ans: 'hyo' },
+    { kana: 'ミャ', ans: 'mya' },
+    { kana: 'ミュ', ans: 'myu' },
+    { kana: 'ミョ', ans: 'myo' },
+    { kana: 'リャ', ans: 'rya' },
+    { kana: 'リュ', ans: 'ryu' },
+    { kana: 'リョ', ans: 'ryo' },
+    { kana: 'ギャ', ans: 'gya' },
+    { kana: 'ギュ', ans: 'gyu' },
+    { kana: 'ギョ', ans: 'gyo' },
+    { kana: 'ジャ', ans: 'jya' },
+    { kana: 'ジュ', ans: 'jyu' },
+    { kana: 'ジェ', ans: 'jye' },
+    { kana: 'ジョ', ans: 'jyo' },
+    { kana: 'ヂャ', ans: 'dya' },
+    { kana: 'ヂュ', ans: 'dyu' },
+    { kana: 'ヂョ', ans: 'dyo' },
+    { kana: 'ビャ', ans: 'bya' },
+    { kana: 'ビュ', ans: 'byu' },
+    { kana: 'ビョ', ans: 'byo' },
+    { kana: 'ピャ', ans: 'pya' },
+    { kana: 'ピュ', ans: 'pyu' },
+    { kana: 'ピョ', ans: 'pyo' },
 ]
 
-const buttons = document.querySelectorAll('button');
 let playHiragana
 let playKatakana
+
+
+const rulesElement = () => (document.getElementById('collapseRules').innerHTML = `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rulesModal">
+Launch rules panel
+</button>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Hana Kana Rules</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="modal-body">
+    <br>
+    <ul class="list-group list-group-flush list-unstyled">
+        <li class="list-group-item-primary">Type your answer in Romaji in the card's text field</li>
+        <li class="list-group-item-info">Press ENTER to submit</li>
+        <li class="list-group-item-success">Repeat for as many cards as you can</li>
+        <li class="list-group-item-danger">You are allowed up to 15 incorrect entries before the game will
+            finish</li>
+        <li class="list-group-item-warning">If you complete all Kana, press the "Finish" button at the bottom
+        </li>
+    </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>`);
 
 //scoreboard variables
 let correct = 0;
 let incorrect = 0;
 let chancesLeft = 15;
 
-//game situation updater
+// //game situation updater
 const correctElement = () => (document.getElementById('correct').innerHTML = `${correct}`);
 const incorrectElement = () => (document.getElementById('incorrect').innerHTML = `${incorrect}`);
 const chancesLeftElement = () => (document.getElementById('chancesLeft').innerHTML = `${chancesLeft}`);
@@ -384,15 +417,28 @@ const chancesLeftElement = () => (document.getElementById('chancesLeft').innerHT
 let hiraganaCards = ''
 let katakanaCards = ''
 
+//borriwng the Fisher-Yates Shuffle, via stack overflow
+function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
+
+    while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+    return array
+}
+
 
 //card area
 const gameDisplayElement = (string) => (document.getElementById('gameDisplay').innerHTML = string);
 
 document.getElementById("hiraganaButton").addEventListener("click", (e) => {
     const generateHiraganaCards = () => {
-        // let hiraganaCards = '';
         hiragana.forEach(function (hiragana, idx) {
-            hiraganaCards += `<div class="card bg-info text-white text-center p-3 border border-warning">
+            hiraganaCards += `<div id ="hiragana" class="card bg-info text-white text-center p-3 border border-warning hiraganaCards">
             <label>
         <h5 class="card-title" value=${hiragana.kana}>${hiragana.kana}</h5>
         <input id=${idx} type="text" class="romaji" value="" size=8 autocomplete="off"></label>
@@ -401,15 +447,20 @@ document.getElementById("hiraganaButton").addEventListener("click", (e) => {
         return hiraganaCards;
     };
 
+    shuffle(hiragana)
     gameDisplayElement(generateHiraganaCards());
     playHiragana = true;
+    rulesElement()
+    correctElement()
+    incorrectElement()
+    chancesLeftElement()
+    disableButtons()
 });
 
 document.getElementById("katakanaButton").addEventListener("click", (e) => {
     const generateKatakanaCards = () => {
-        // let katakanaCards = '';
         katakana.forEach(function (katakana, idx) {
-            katakanaCards += `<div class="card bg-info text-white text-center p-3 border border-warning">
+            katakanaCards += `<div id="katakana" class="card bg-info text-white text-center p-3 border border-warning katakanaCards">
             <label>
         <h5 class="card-title" value=${katakana.kana}>${katakana.kana}</h5>
         <input id=${idx} type="text" class="romaji" value="" size=8 autocomplete="off"></label>
@@ -418,9 +469,21 @@ document.getElementById("katakanaButton").addEventListener("click", (e) => {
         return katakanaCards;
     };
 
+    shuffle(katakana)
     gameDisplayElement(generateKatakanaCards());
     playKatakana = true;
+    rulesElement()
+    correctElement()
+    incorrectElement()
+    chancesLeftElement()
+    disableButtons()
 });
+
+function disableButtons() {
+    document.getElementById("hiraganaButton").disabled = true;
+    document.getElementById("katakanaButton").disabled = true;
+}
+
 
 let userAnswer;
 let userIndex;
@@ -436,41 +499,89 @@ input.addEventListener('keyup', function (e) {
 })
 
 function checkAnswer(userAnswer, idx) {
-    if(playHiragana === true) {
-kana = hiragana[idx]}
-    else if(playKatakana === true) {
-kana = katakana[idx]}
+    if (playHiragana === true) {
+        kana = hiragana[idx]
+    }
+    else if (playKatakana === true) {
+        kana = katakana[idx]
+    }
     let isCorrect = userAnswer === kana.ans
-    if(isCorrect) {
+    if (isCorrect) {
+        correct++
+        correctElement()
+        incorrectElement()
+        chancesLeftElement()
         showCorrect()
-    }else {
+    } else {
+        incorrect++
+        chancesLeft--
+        alert(`Whoops! The correct romaji is ${kana.ans}`);
         showIncorrect()
+        correctElement()
+        incorrectElement()
+        chancesLeftElement()
+        checkStatus()
     }
 }
 
 function showCorrect() {
-    alert('correct')
+    if (playHiragana === true) {
+        const hiraganaClasses = document.querySelectorAll('.hiraganaCards');
+        let i;
+        for (i = 0; i < hiraganaClasses.length; i++) {
+            hiraganaClasses[userIndex].classList.remove('bg-info')
+            hiraganaClasses[userIndex].classList.add('bg-success')
+        }
+    } else if (playKatakana === true) {
+        const katakanaClasses = document.querySelectorAll('.katakanaCards');
+        let i;
+        for (i = 0; i < katakanaClasses.length; i++) {
+            katakanaClasses[userIndex].classList.remove('bg-info')
+            katakanaClasses[userIndex].classList.add('bg-success')
+        }
+    }
 }
 
 function showIncorrect() {
-    alert('incorrect')
+    if (playHiragana === true) {
+        const hiraganaClasses = document.querySelectorAll('.hiraganaCards');
+        let i;
+        for (i = 0; i < hiraganaClasses.length; i++) {
+            hiraganaClasses[userIndex].classList.remove('bg-info')
+            hiraganaClasses[userIndex].classList.add('bg-danger')
+        }
+    } else if (playKatakana === true) {
+        const katakanaClasses = document.querySelectorAll('.katakanaCards');
+        let i;
+        for (i = 0; i < katakanaClasses.length; i++) {
+            katakanaClasses[userIndex].classList.remove('bg-info')
+            katakanaClasses[userIndex].classList.add('bg-danger')
+        }
+    }
 }
 
-correctElement()
-incorrectElement()
-chancesLeftElement()
+function checkStatus() {
+    if (chancesLeft === 0) {
+        alert(`GAME OVER!`);
+        gameOver();
+    }
+}
 
-// function showCorrect() {
-//     correct += 1;
-// }
+document.getElementById("finish").addEventListener("click", (e) => {
+    if (playHiragana === true) {
+        alert(`You answered: ${percentage(correct, 107)}% of hiragana correctly`)
+    } else if (playKatakana === true) {
+        alert(`You answered: ${percentage(correct, 110)}% of katakana correctly`)
+    }
+});
 
-// function showIncorrect() {
-//     incorrect += 1;
-// }
+function percentage(correct, number) {
+    return (100 * correct) / number;
+}
 
-// correctElement()
-// incorrectElement()
-// chancesLeftElement()
+function gameOver() {
+    document.location.reload();
+}
 
 
 

@@ -145,14 +145,14 @@
 // const hiraganaAnswers = 'a,i,u,e,o,ka,ki,ku,ke,ko,sa,shi,su,se,so,ta,chi,tsu,te,to,na,ni,nu,ne,no,ha,hi,fu,he,ho,ma,mi,mu,me,mo,ya,yu,yo,ra,ri,ru,re,ro,wa,wo,n,ga,gi,gu,ge,go,za,ji,zu,ze,zo,da,di,du,de,do,ba,bi,bu,be,bo,pa,pi,pu,pe,po,kya,kyu,kyo,sha,shu,sho,cha,chu,cho,nya,nyu,nyo,hya,hyu,hyo,mya,myu,myo,rya,ryu,ryo,gya,gyu,gyo,jya,jyu,jyo,bya,byu,byo,pya,pyu,pyo'.split(',');
 
 const hiragana = [
-    { kana: 'あ', ans: 'a' },
-    { kana: 'い', ans: 'i' },
-    { kana: 'う', ans: 'u' },
-    { kana: 'え', ans: 'e' },
-    { kana: 'お', ans: 'o' },
-    { kana: 'か', ans: 'ka' },
-    { kana: 'き', ans: 'ki' },
-    { kana: 'く', ans: 'ku' },
+    { kana: 'あ', ans: 'a', audio: 'audio/a.mp3' },
+    { kana: 'い', ans: 'i', audio: 'audio/i.mp3' },
+    { kana: 'う', ans: 'u', audio: 'audio/u.mp3' },
+    { kana: 'え', ans: 'e', audio: 'audio/e.mp3' },
+    { kana: 'お', ans: 'o', audio: 'audio/o.mp3' },
+    { kana: 'か', ans: 'ka', audio: 'audio/ka.mp3' },
+    { kana: 'き', ans: 'ki', audio: 'audio/ki.mp3' },
+    { kana: 'く', ans: 'ku', audio: 'audio/ku.mp3' },
     { kana: 'け', ans: 'ke' },
     { kana: 'こ', ans: 'ko' },
     { kana: 'さ', ans: 'sa' },
@@ -441,6 +441,7 @@ document.getElementById("hiraganaButton").addEventListener("click", (e) => {
             hiraganaCards += `<div id ="hiragana" class="card bg-info text-white text-center p-3 border border-warning hiraganaCards">
             <label>
         <h5 class="card-title" value=${hiragana.kana}>${hiragana.kana}</h5>
+        <audio class="my_audio" controls preload="none"><source src=${hiragana.audio}>${hiragana.audio}</a></audio>
         <input id=${idx} type="text" class="romaji" value="" size=8 autocomplete="off"></label>
     </div>`;
         });

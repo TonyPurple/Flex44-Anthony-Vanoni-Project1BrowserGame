@@ -25,6 +25,17 @@
 
 <body>
     <div class="container">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Game Page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="about.html">About Hana Kana</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">Kana Charts</a>
+            </li>
+        </ul>
         <!-- Jumbotron -->
         <div class="jumbotron jumbotron-fluid bg-dark text-white mr-auto p-2">
             <div class="container intro">
@@ -37,15 +48,29 @@
         <div class="btn-group btn-group-lg bg-light rounded-bottom characterSet" role="group"
             aria-label="Choose character set">
             <h2 class="text-center rounded-left">Choose character set: </h2>
-            <button type="button" class="btn btn-primary border-left rounded-circle" id="hiraganaButton" type="button">Hiragana</button>
-            <button type="button" class="btn btn-primary border-left rounded-circle" id="katakanaButton" type="button">Katakana</button>
+            <button type="button" class="btn btn-primary border-left rounded-circle" id="hiraganaButton"
+                type="button">Hiragana</button>
+            <button type="button" class="btn btn-primary border-left rounded-circle" id="katakanaButton"
+                type="button">Katakana</button>
         </div>
         <div class="rules" id="collapseRules">
         </div>
-        <div class="charts" id="collapseCharts">
-            <div class="hiragana"></div>
-            <div class="katakana"></div>
-        </div>
+        <!-- <div class="card-group charts">
+            <div class="card">
+                <img src="https://i.imgur.com/sDF1yGi.jpg" title="source: imgur.com" class="card-img-top"
+                    alt="Hiragana">
+                <div class="card-body">
+                    <h5 class="card-title">Hiragana Chart</h5>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://i.imgur.com/WytXGts.jpg" title="source: imgur.com" class="card-img-top"
+                alt="Katakana">
+                <div class="card-body">
+                    <h5 class="card-title">Katakana Chart</h5>
+                </div>
+            </div>
+        </div> -->
         <br>
         <div class="card border border-primary sticky-top" style="width: 18rem;">
             <div class="card-body bg-light text-primary currentSituation">
@@ -62,7 +87,5 @@
         <button type="button" id="finish" class="btn btn-secondary btn-lg btn-block">Finish</button>
     </div>
 </body>
-
-</html>
 
 </html>

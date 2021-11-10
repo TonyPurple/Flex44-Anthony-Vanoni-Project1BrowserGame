@@ -410,12 +410,16 @@ let incorrect = 0;
 let chancesLeft = 15;
 let displayMsg = ''
 let wrongKana = []
+let seconds = 0;
+let minutes = 0;
+
 
 // //game situation updater
 const correctElement = () => (document.getElementById('correct').innerHTML = `${correct}`);
 const incorrectElement = () => (document.getElementById('incorrect').innerHTML = `${incorrect}`);
 const chancesLeftElement = () => (document.getElementById('chancesLeft').innerHTML = `${chancesLeft}`);
 const displayMsgElement = () => (document.getElementById('displayMsg').innerHTML = `${displayMsg}`);
+
 
 let hiraganaCards = ''
 let katakanaCards = ''
@@ -485,12 +489,28 @@ document.getElementById("katakanaButton").addEventListener("click", (e) => {
 });
 
 var myMusic;
+let timer
+let displaySeconds = 0
+
+
 
 function startGame() {
     document.getElementById("hiraganaButton").disabled = true;
     document.getElementById("katakanaButton").disabled = true;
     myMusic = new sound("audio/Hana Kimura-Samurai (ROH Theme).mp3");
     myMusic.play()
+    timer = setInterval(function () {
+        document.getElementById('totalTime').innerHTML = `Total time: ${minutes}:${displaySeconds} has elapsed`;
+        seconds ++;
+        if (seconds / 60 === 1) {
+            seconds = 0
+            minutes += 1
+        } if (seconds < 10) {
+            displaySeconds = "0" + seconds.toString()
+        } else {
+            displaySeconds = seconds;
+        }
+    }, 1000);
 }
 
 function sound(src) {
@@ -593,6 +613,7 @@ function checkStatus() {
     if (chancesLeft === 0) {
         displayMsg = ` You're out of chances. Hana recommends working on ${wrongKana} <a href="https://imgur.com/1bG0Tmu"><img src="https://i.imgur.com/1bG0Tmu.gif" title="source: imgur.com" /></a>`;
         displayMsgElement();
+        clearInterval(timer)
         setTimeout(() => {
             gameOver();
         }, 10000);
@@ -606,13 +627,16 @@ document.getElementById("finish").addEventListener("click", (e) => {
         displayMsg = ` You answered ${percentage(correct, 110)}% of katakana correctly. <a href="https://imgur.com/MJHaYGq"><img src="https://i.imgur.com/MJHaYGq.gif" title="source: imgur.com" /></a>`
     }
     displayMsgElement();
+    clearInterval(timer)
     setTimeout(() => {
         gameOver();
     }, 10000);
 });
 
 function percentage(correct, number) {
-    return (100 * correct) / number;
+    let floatNumber = parseFloat(correct, number)
+    floatNumber = parseFloat(100 * correct) / number
+    return floatNumber.toLocaleString('en')
 }
 
 function gameOver() {

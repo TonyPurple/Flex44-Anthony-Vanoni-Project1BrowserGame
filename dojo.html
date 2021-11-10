@@ -19,8 +19,8 @@
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
-    <!-- <script defer src="charts.js"></script> -->
-    <title>Hiragana and Katakana Reference Charts</title>
+    <script defer src="dojo.js"></script>
+    <title>Hiragana and Katakana Reference</title>
 </head>
 
 <body>
@@ -33,21 +33,28 @@
                 <a class="nav-link" href="about.html">About Hana Kana</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">Kana Charts</a>
+                <a class="nav-link" href="dojo">Training Dojo</a>
             </li>
         </ul>
-        <div class="card">
-            <img src="https://i.imgur.com/sDF1yGi.jpg" title="source: imgur.com" class="card-img-top" alt="Hiragana">
-            <div class="card-body">
-                <h5 class="card-title">Hiragana Chart</h5>
+        <br>
+        <p class="lead text-center border rounded-right">Listen to audio examples and view keyboard inputs for each Kana
+        </p>
+        <br>
+        <div class="btn-group btn-group-lg bg-light rounded-bottom characterSet" role="group"
+            aria-label="Choose character set">
+            <h2 class="text-center rounded-left">Choose character set: </h2>
+            <button type="button" class="btn btn-primary border-left rounded-circle" id="hiraganaButton"
+                type="button">Hiragana</button>
+            <button type="button" class="btn btn-primary border-left rounded-circle" id="katakanaButton"
+                type="button">Katakana</button>
+        </div>
+        <br>
+        <div class="container" id="cards">
+            <div class="card-columns" id="gameDisplay">
             </div>
         </div>
-        <div class="card">
-            <img src="https://i.imgur.com/WytXGts.jpg" title="source: imgur.com" class="card-img-top" alt="Katakana">
-            <div class="card-body">
-                <h5 class="card-title">Katakana Chart</h5>
-            </div>
-        </div>
+        <br>
+        <button type="button" id="reset" class="btn btn-secondary btn-lg btn-block">Reset</button>
     </div>
 </body>
 

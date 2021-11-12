@@ -491,6 +491,7 @@ document.getElementById("katakanaButton").addEventListener("click", (e) => {
 var myMusic;
 let timer
 let displaySeconds = 0
+let totalTime
 
 
 
@@ -501,7 +502,7 @@ function startGame() {
     myMusic.play()
     timer = setInterval(function () {
         document.getElementById('totalTime').innerHTML = `Total time: ${minutes}:${displaySeconds} has elapsed`;
-        seconds ++;
+        seconds++;
         if (seconds / 60 === 1) {
             seconds = 0
             minutes += 1
@@ -509,7 +510,7 @@ function startGame() {
             displaySeconds = "0" + seconds.toString()
         } else {
             displaySeconds = seconds;
-        }
+        } totalTime = `${minutes}:${displaySeconds}`
     }, 1000);
 }
 
@@ -520,15 +521,15 @@ function sound(src) {
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
-    this.play = function(){
-      this.sound.play();
-      this.sound.volume = 0.01;
-      this.sound.loop = true;
+    this.play = function () {
+        this.sound.play();
+        this.sound.volume = 0.01;
+        this.sound.loop = true;
     }
-    this.stop = function(){
-      this.sound.pause();
+    this.stop = function () {
+        this.sound.pause();
     }
-  }
+}
 
 let userAnswer;
 let userIndex;
@@ -611,20 +612,36 @@ function showIncorrect() {
 
 function checkStatus() {
     if (chancesLeft === 0) {
-        displayMsg = ` You're out of chances. Hana recommends working on ${wrongKana} <a href="https://imgur.com/1bG0Tmu"><img src="https://i.imgur.com/1bG0Tmu.gif" title="source: imgur.com" /></a>`;
+        displayMsg = ` 2 Stars for trying. Come back when you're stronger. Hana recommends working on ${wrongKana} <a href="https://imgur.com/1bG0Tmu"><img src="https://i.imgur.com/1bG0Tmu.gif" title="source: imgur.com" /></a>`
         displayMsgElement();
         clearInterval(timer)
         setTimeout(() => {
             gameOver();
         }, 10000);
-        }
-    };
+    }
+};
 
 document.getElementById("finish").addEventListener("click", (e) => {
-    if (playHiragana === true) {
-        displayMsg = ` You answered ${percentage(correct, 107)}% of hiragana correctly. <a href="https://imgur.com/MJHaYGq"><img src="https://i.imgur.com/MJHaYGq.gif" title="source: imgur.com" /></a>`
-    } else if (playKatakana === true) {
-        displayMsg = ` You answered ${percentage(correct, 110)}% of katakana correctly. <a href="https://imgur.com/MJHaYGq"><img src="https://i.imgur.com/MJHaYGq.gif" title="source: imgur.com" /></a>`
+    if (playHiragana === true && (correct + chancesLeft <= 15)) {
+        displayMsg = ` You're leaving too soon. Here's 1 Star for showing up'. <a href="https://imgur.com/3K7SbzA"><img src="https://i.imgur.com/3K7SbzA.gif" title="source: imgur.com" /></a>`
+    } else if (playHiragana === true && correct <= 95) {
+        displayMsg = ` That was close. 3 Stars! You answered ${percentage(correct, 107)}% of hiragana correctly in ${totalTime}. <a href="https://imgur.com/UcG7K7R"><img src="https://i.imgur.com/UcG7K7R.gif" title="source: imgur.com" /></a>`
+    }
+    else if (playHiragana === true && correct === 107) {
+        displayMsg = ` That's a 5 Star performace! You answered ${percentage(correct, 107)}% of hiragana correctly in ${totalTime}. <a href="https://imgur.com/Zr6CWzu"><img src="https://i.imgur.com/Zr6CWzu.gif" title="source: imgur.com" /></a>`
+    }
+    else if (playHiragana === true && correct >= 96) {
+        displayMsg = ` You're on your way. 4 Stars! You answered ${percentage(correct, 107)}% of hiragana correctly in ${totalTime}. <a href="https://imgur.com/MJHaYGq"><img src="https://i.imgur.com/MJHaYGq.gif" title="source: imgur.com" /></a>`
+    } else if (playKatakana === true && (correct + chancesLeft <= 15)) {
+        displayMsg = ` You're leaving too soon. Here's 1 Star for showing up'. <a href="https://imgur.com/ZEdG1VN"><img src="https://i.imgur.com/ZEdG1VN.gif" title="source: imgur.com" /></a>`
+    } else if (playKatakana === true && correct <= 98) {
+        displayMsg = ` That was close. 3 Stars! You answered ${percentage(correct, 107)}% of katakana correctly in ${totalTime}. <a href="https://imgur.com/TFqW2iD"><img src="https://i.imgur.com/TFqW2iD.gif" title="source: imgur.com" /></a>`
+    }
+    else if (playKatakana === true && correct === 110) {
+        displayMsg = ` That's a 5 Star performace! You answered ${percentage(correct, 107)}% of katakana correctly in ${totalTime}. <a href="https://imgur.com/WLqlUWA"><img src="https://i.imgur.com/WLqlUWA.gif" title="source: imgur.com" /></a>`
+    }
+    else if (playKatakana === true && correct >= 99) {
+        displayMsg = ` You're on your way. 4 Stars! You answered ${percentage(correct, 107)}% of katakana correctly in ${totalTime}. <a href="https://imgur.com/D3lnh6J"><img src="https://i.imgur.com/D3lnh6J.gif" title="source: imgur.com" /></a>`
     }
     displayMsgElement();
     clearInterval(timer)
@@ -640,7 +657,7 @@ function percentage(correct, number) {
 }
 
 function gameOver() {
-    document.location.reload(5000);
+    document.location.reload();
 }
 
 

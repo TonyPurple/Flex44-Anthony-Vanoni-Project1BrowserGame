@@ -1,3 +1,7 @@
+### Getting Started
+
+To play a live version of Hana Kana, click here: <a href = "https://tonypurple.github.io/Flex44-Anthony-Vanoni-Project1BrowserGame/">Hana Kana</a> and select a character set to start the game.
+
 <img src="https://i.imgur.com/DGkFsKy.png">
 
 # Hana Kana
@@ -58,10 +62,6 @@ If you are able, please support the "Remember Hana" initiative to help eradicate
 2. Bootstrap CSS
 
 3. Vanilla JavaScript
-
-### Getting Started
-
-To play a live version of Hana Kana, click here: <a href = "https://tonypurple.github.io/Flex44-Anthony-Vanoni-Project1BrowserGame/">Hana Kana</a> and select a character set to start the game.
 
 #### Next Steps
 
